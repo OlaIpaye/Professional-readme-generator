@@ -48,3 +48,6 @@ README Application Functionality:
 - When a user enters their email address, it's added to the section of the README entitled Questions, with instructions on how to reach them with additional questions.
 
 - When a user clicks on the links in the Table of Contents, they are taken to the corresponding section of the README.
+
+* Project Video, documenting the readme generator:
+  https://drive.google.com/file/d/1BcGvU6nfSO-7DjN_6pkrWxktGLV9GR0f/view
