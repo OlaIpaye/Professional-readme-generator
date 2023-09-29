@@ -4,17 +4,17 @@ const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
 
 // Contents of the README file
-const generateMarkdown = `
-# ${projectTitle},
-## ${projectDescription},
-## ${tableOfContents},
-## ${appInstallationGuide},
-## ${appUsage},
-## ${appLicense},
-## ${appContributors},
-## ${appTesting},
-## ${questions},
-`;
+// const generateMarkdown = `
+// # ${projectTitle},
+// ## ${projectDescription},
+// ## ${tableOfContents},
+// ## ${appInstallationGuide},
+// ## ${appUsage},
+// ## ${appLicense},
+// ## ${appContributors},
+// ## ${appTesting},
+// ## ${questions},
+// `;
 
 // array of questions for user
 const questions = [
@@ -42,7 +42,7 @@ const questions = [
 
     type: "input",
     type: appLicense,
-    message: "License:",
+    message: "License: 1.0.0",
 
     type: "input",
     type: appContributors,
@@ -68,22 +68,12 @@ fs.writeFile("README.md", generateMarkdown, (err) =>
 );
 
 // function to initialize program
-function init() {}
-
-function generateReadme(answers) {
+function generateMarkdown(answers) {
   return `
-  # ${answers.title}
+  # ${answers.projectTitle}
   
   ## Description
-  ${answers.description}
-  
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Contributing](#contributing)
-  - [Tests](#tests)
-  - [Questions](#questions)
+  ${answers.projectDescription}
   
   ## Installation
   ${answers.installation}
@@ -92,20 +82,24 @@ function generateReadme(answers) {
   ${answers.usage}
   
   ## License
-  This project is licensed under the ${answers.license} license.
+  This project is licensed under the ${answers.appLicense} license.
   
-  ## Contributing
+  ## Contributors
   ${answers.contributing}
   
-  ## Tests
-  ${answers.tests}
+  ## Testing
+  ${answers.appTesting}
   
   ## Questions
-  If you have any questions, please feel free to [email me](mailto:${answers.email}).
-  
-  ![GitHub Profile Picture](${answers.avatar_url})
+  If you have any questions, please feel free to [email me](mailto:${answers.questions}).
   `;
 }
 
-// function call to initialize program
-init();
+// Prompt users questions
+inquirer
+  .prompt(questions)
+  .then((answers) => {
+    const readmeFile = generateMarkdown(answers));
+
+  // function call to initialize program
+generateMarkdown();
